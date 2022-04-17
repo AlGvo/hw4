@@ -1,9 +1,11 @@
 <?php
+namespace home_work_4\Mechanisms;
 
 class Boat extends Vehicle
 {
     protected $boat_length;
     protected $name;
+    protected static $country_flag;
 
     function __construct($max_speed, $boat_length, $name)
     {
@@ -12,21 +14,21 @@ class Boat extends Vehicle
         $this->name = $name;
     }
 
+    public static function getCountryFlag()
+    {
+        return self::$country_flag;
+    }
 
-    /**
-     * @return mixed
-     */
+    public static function setCountryFlag($country_flag): void
+    {
+        self::$country_flag = $country_flag;
+    }
+
     public function getName()
     {
         return $this->name;
     }
 
-    /**
-     * @return mixed
-     */
-    /**
-     * @return mixed
-     */
     public function getBoatLength()
     {
         return $this->boat_length;

@@ -1,17 +1,34 @@
 <?php
 
-include 'MavableInterface.php';
+
+namespace home_work_4\Mechanisms;
 
 class Vehicle implements MovableInterface
 {
     protected $max_speed;
     private $current_speed;
+    protected static $creation_country;
+    public const COLOR_YELLOW = 'yellow';
+    public const COLOR_GREEN = 'green';
+    public const COLOR_RED = 'red';
 
     public function __construct($max_speed)
     {
         $this->max_speed = $max_speed;
 
- //       echo "I am construct and my speed is ".$max_speed.PHP_EOL;
+    }
+
+    public static function getCreationCountry()
+    {
+        return self::$creation_country;
+    }
+
+    /**
+     * @param mixed $creation_country
+     */
+    public static function setCreationCountry($creation_country): void
+    {
+        self::$creation_country = $creation_country;
     }
 
     public function getMaxSpeed()
@@ -70,6 +87,17 @@ class Vehicle implements MovableInterface
         return ' I stop'. PHP_EOL;
     }
 
+    public function checkExistngColor($color, $vehicle_name) {
+        if (in_array($color, [
+            self::COLOR_GREEN,
+            self::COLOR_RED,
+            self::COLOR_YELLOW
+        ])) {
+            return 'You can buy the '. $vehicle_name . ' with color '. $color. PHP_EOL;
+        }
+
+        return 'There is no '. $vehicle_name . ' with color '. $color. PHP_EOL;
+    }
 
 
 

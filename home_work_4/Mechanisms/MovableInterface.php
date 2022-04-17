@@ -1,5 +1,5 @@
 <?php
-
+namespace home_work_4\Mechanisms;
 
 interface MovableInterface
 {
