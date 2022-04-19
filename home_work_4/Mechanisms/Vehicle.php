@@ -12,9 +12,21 @@ class Vehicle implements MovableInterface
     public const COLOR_GREEN = 'green';
     public const COLOR_RED = 'red';
 
+    //for home work 6 - сomposition, aggregation, association
+    //Composition
+    protected $go_ahead;
+    protected $turn_right;
+    protected $turn_left;
+
+
     public function __construct($max_speed)
     {
         $this->max_speed = $max_speed;
+        //Composition
+        $this->go_ahead = new GoAhead();
+        $this->turn_left = new TurnLeft();
+        $this->turn_right = new TurnRight();
+
 
     }
 
@@ -52,14 +64,17 @@ class Vehicle implements MovableInterface
         if($this->current_speed !== null){
             $this->current_speed += $unit;
         } else {
-            return 'Engine not running';
+            return 'Engine is not running';
         }
 
         if($this->current_speed > $this->max_speed){
             return 'This speed is more then maximum';
         }
-
-        return 'I am moving and my speed is '.$this->current_speed. PHP_EOL;
+            $go = $this->go_ahead->moving();
+            $left = $this->turn_left->turningLeft();
+            $right = $this->turn_right->turningRight();
+            return 'I am moving and my speed is '.$this->current_speed. PHP_EOL. $go . $left. $right .  PHP_EOL;
+            //return 'I am moving and my speed is '.$this->current_speed. PHP_EOL;
     }
 
 
