@@ -1,0 +1,16 @@
+{
+    "name": "alexander/hw4",
+    "description": "Hillel Homework project",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Alexander Gvozdev",
+            "email": "dp161185gav@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "guzzlehttp/guzzle": "7.0"
+    }
+}
